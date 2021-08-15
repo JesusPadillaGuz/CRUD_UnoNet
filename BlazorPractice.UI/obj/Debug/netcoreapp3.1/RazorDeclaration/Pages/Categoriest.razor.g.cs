@@ -98,7 +98,7 @@ using BlazorLib.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "D:\Users\Omen\source\repos\BlazorPractice\BlazorPractice.UI\Pages\Categoriest.razor"
+#line 45 "D:\Users\Omen\source\repos\BlazorPractice\BlazorPractice.UI\Pages\Categoriest.razor"
        
     public IEnumerable<Categories> categories { get; set; }
     public string Message { get; set; }
