@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "R5QgZGRhE2BhD15FjinzfHx01uuazE+ybfUEE8dF6P7SIEw9BH6mntTDfPqOHE5TpWoK2zDZzu1cdulTxcPWqw==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\Omen\\source\\repos\\BlazorPractice\\BlazorLib.Model\\BlazorLib.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

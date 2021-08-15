@@ -1,0 +1,25 @@
+﻿@using BlazorPractice.UI.Components
+
+
+
+<h3>ExpenseTracker</h3>
+
+<TabControl>
+    <tabTitle>
+
+        <img src="/images/@(context.imgSource).png" style="width: 25%;" />  @context.Text
+    </tabTitle>
+
+    <ChildContent>
+        <TabPage Text="Expense" imgSource="menos">
+          <ExpenseDetails ExpenseType="@BlazorLib.Model.ExpenseType.Expense"></ExpenseDetails>
+        </TabPage>
+        <TabPage Text="Income" imgSource="mas">
+            <ExpenseDetails ExpenseType="@BlazorLib.Model.ExpenseType.Income"></ExpenseDetails>
+        </TabPage>
+    </ChildContent>
+</TabControl>
+
+@code {
+
+}

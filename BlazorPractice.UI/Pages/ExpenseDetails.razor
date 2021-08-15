@@ -1,0 +1,68 @@
+﻿
+@using BlazorLib.Model
+@using Interfaces
+@inject ICategoryService  CategoryService
+
+
+<EditForm Model="@expense">
+    <DataAnnotationsValidator/>
+    <table class="table">
+        <tr>
+            <td>Amount: </td>
+            <td>
+                <InputNumber @bind-Value="@expense.Amount"> </InputNumber>
+                <ValidationMessage For="@(()=>expense.Amount)" />
+            </td>
+        </tr>
+        <tr>
+            <td>Transaction Date: </td>
+            <td><InputDate @bind-Value="@expense.TransactionDate"> </InputDate>
+            <ValidationMessage For="@(()=>expense.TransactionDate)"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td>
+                <InputSelect @bind-Value="@expense.CategoryId">
+                    @foreach (Categories category in categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+
+                    }
+                </InputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td>Expense Type:</td>
+            <td>
+                <InputSelect disabled="true" @bind-Value="@expense.ExpenseType">
+
+                    <option value="@ExpenseType.Income">Income</option>
+                    <option value="@ExpenseType.Expense">Expense</option>
+                </InputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" class="btn-success" value="Save"/>
+                <input type="button" class="btn-secondary" value="Cancel"/>
+            </td>
+         
+        </tr>
+    </table>
+</EditForm>
+
+@code {
+    private Expense expense = new Expense();
+    private IEnumerable<Categories> categories = new List<Categories>();
+
+    [Parameter]
+    public ExpenseType ExpenseType { get; set; }
+
+    protected  async override Task OnInitializedAsync()
+    {
+        categories = await CategoryService.GetAllCategories();
+        expense.CategoryId = categories.FirstOrDefault().Id.ToString();
+        expense.ExpenseType = ExpenseType;
+    }
+}

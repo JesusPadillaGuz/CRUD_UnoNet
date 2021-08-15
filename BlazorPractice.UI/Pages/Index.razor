@@ -1,0 +1,21 @@
+﻿@page "/"
+
+
+
+<h1>Hello, world!</h1>
+
+Bienvenido a Blazor
+
+<p>@DateTime.Now</p>
+<p>@DateTime.DaysInMonth(2020,03)</p>
+
+
+
+@code{
+    private int currentCount = 0;
+    private void incrementCount()
+    {
+        currentCount++;
+    }
+}
+

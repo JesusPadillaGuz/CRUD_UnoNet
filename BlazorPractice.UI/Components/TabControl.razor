@@ -1,0 +1,58 @@
+﻿
+
+<div class="btn-group" role="group" style="width:20%">
+    @foreach(TabPage tab_page in Pages)
+    {
+    <button type="button" class="btn @GetButtonClass(tab_page)" @onclick=@(() => ActivatePage(tab_page) )>
+        @if (tabTitle != null)
+        {
+            @tabTitle(tab_page)
+        }
+        else
+        {
+            @tab_page.Text
+        }
+
+    </button>
+    }
+</div>
+
+<CascadingValue Value="this">
+    @ChildContent
+</CascadingValue>
+
+@code {
+        //este parametro va a recibir cada tabPage que se agregue al TabControl
+        [Parameter]
+        public RenderFragment ChildContent {get; set;}
+
+        [Parameter]
+        public RenderFragment<TabPage> tabTitle { get; set;}
+
+    public TabPage ActivePage { get; set; }
+    List<TabPage> Pages = new List<TabPage>();
+
+
+    internal void AddPage(TabPage tabPage)
+    {
+        Pages.Add(tabPage);
+
+        if(Pages.Count == 1)
+        {
+            ActivePage = tabPage;
+
+            StateHasChanged();
+        }
+
+    }
+
+    protected string GetButtonClass(TabPage page)
+    {
+        return page == ActivePage ? "btn-primary" : "btn-secondary";
+    }
+
+    protected void ActivatePage(TabPage page)
+    {
+        ActivePage = page;
+    }
+}
